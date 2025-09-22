@@ -1,0 +1,545 @@
+/* Custom CSS for DevOps Portfolio */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: #1a1a2e;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00d4aa, #0066cc);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #00b894, #004499);
+}
+
+/* Navigation Styles */
+.nav-link {
+    @apply text-gray-300 hover:text-devops-accent px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: linear-gradient(90deg, #00d4aa, #0066cc);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-link.active {
+    @apply text-devops-accent;
+}
+
+.nav-link.active::after {
+    width: 80%;
+}
+
+.mobile-nav-link {
+    @apply text-gray-300 hover:text-devops-accent block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300;
+}
+
+/* Particle Animation */
+.particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.particle-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #00d4aa, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(0, 102, 204, 0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #00d4aa, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(0, 102, 204, 0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #00d4aa, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: particles 20s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes particles {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100px); }
+}
+
+/* Button Styles */
+.btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-devops-accent to-devops-blue text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 relative overflow-hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-devops-accent text-devops-accent font-semibold rounded-lg hover:bg-devops-accent hover:text-gray-900 transform hover:-translate-y-1 transition-all duration-300;
+}
+
+.btn-sm {
+    @apply px-4 py-2 text-sm;
+}
+
+/* Tech Icons in Hero */
+.tech-icon {
+    @apply flex flex-col items-center p-4 bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700 hover:border-devops-accent transition-all duration-300 transform hover:scale-105 hover:-translate-y-2;
+}
+
+.tech-icon i {
+    @apply text-2xl mb-2 text-devops-accent;
+}
+
+.tech-icon span {
+    @apply text-sm text-gray-300;
+}
+
+/* Typing Animation */
+.typing-animation {
+    border-right: 2px solid #00d4aa;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    0%, 20% { width: 0; }
+    30%, 70% { width: 100%; }
+    80%, 100% { width: 0; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #00d4aa; }
+}
+
+/* Profile Image Animation */
+.animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+    0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 0 20px rgba(0, 212, 170, 0);
+        transform: scale(1.05);
+    }
+}
+
+/* Statistics Cards */
+.stat-card {
+    @apply bg-gray-800/50 rounded-lg p-4 text-center border border-gray-700 hover:border-devops-accent transition-all duration-300 transform hover:scale-105;
+}
+
+/* Skills Section */
+.skill-category {
+    @apply bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-devops-accent transition-all duration-300 transform hover:-translate-y-2;
+}
+
+.skill-header {
+    @apply flex items-center mb-6;
+}
+
+.skill-list {
+    @apply space-y-4;
+}
+
+.skill-item {
+    @apply space-y-2;
+}
+
+.skill-bar {
+    @apply w-full bg-gray-700 rounded-full h-2 overflow-hidden;
+}
+
+.skill-progress {
+    @apply h-full bg-gradient-to-r from-devops-accent to-devops-blue rounded-full transition-all duration-1000 ease-out transform origin-left;
+    animation: skillLoad 2s ease-out forwards;
+}
+
+@keyframes skillLoad {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* Experience Section */
+.experience-item {
+    position: relative;
+}
+
+.experience-card {
+    @apply bg-gray-900 rounded-lg p-6 border border-gray-700 hover:border-devops-accent transition-all duration-300 transform hover:scale-105 shadow-lg;
+}
+
+.experience-date {
+    @apply text-sm text-devops-accent font-semibold mb-2 block;
+}
+
+/* Strength Cards */
+.strength-card {
+    @apply bg-gray-900 rounded-lg p-6 text-center border border-gray-700 hover:border-devops-accent transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl;
+}
+
+/* Project Cards */
+.project-card {
+    @apply bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-devops-accent transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl;
+}
+
+.project-header {
+    @apply bg-gray-900 p-6 border-b border-gray-700 flex items-center;
+}
+
+.project-body {
+    @apply p-6;
+}
+
+.project-features {
+    @apply space-y-2;
+}
+
+.feature-item {
+    @apply flex items-center text-sm text-gray-300;
+}
+
+.project-actions {
+    @apply flex flex-wrap gap-3;
+}
+
+.tech-tag {
+    @apply px-3 py-1 bg-devops-blue/20 text-devops-accent rounded-full text-sm border border-devops-blue/30 hover:bg-devops-blue/30 transition-colors duration-300;
+}
+
+/* Contact Section */
+.contact-item {
+    @apply flex items-start space-x-4 p-4 bg-gray-900 rounded-lg border border-gray-700 hover:border-devops-accent transition-all duration-300;
+}
+
+/* Social Links */
+.social-link {
+    @apply w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-devops-accent transition-all duration-300 transform hover:scale-110 hover:-translate-y-1;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tech-icon {
+        @apply p-2;
+    }
+    
+    .tech-icon i {
+        @apply text-xl;
+    }
+    
+    .tech-icon span {
+        @apply text-xs;
+    }
+    
+    .project-actions {
+        @apply flex-col;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        @apply w-full justify-center;
+    }
+}
+
+@media (max-width: 640px) {
+    .experience-item .md\\:flex {
+        @apply block;
+    }
+    
+    .experience-item .md\\:w-1\\/2 {
+        @apply w-full mb-4;
+    }
+    
+    .experience-item .md\\:pr-8 {
+        @apply pr-0 text-left;
+    }
+    
+    .experience-item .md\\:pl-8 {
+        @apply pl-0;
+    }
+}
+
+/* Loading Animation for Skills Chart */
+.chart-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #374151;
+    border-top: 4px solid #00d4aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Gradient Text Animation */
+.gradient-text {
+    background: linear-gradient(-45deg, #00d4aa, #0066cc, #00d4aa, #0066cc);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Code Block Styling */
+.code-block {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+.code-block .line-numbers {
+    color: #6e7681;
+    margin-right: 1rem;
+    user-select: none;
+}
+
+/* Hover Effects for Interactive Elements */
+.interactive-hover {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.interactive-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 212, 170, 0.1), rgba(0, 102, 204, 0.1));
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.interactive-hover:hover::before {
+    opacity: 1;
+}
+
+/* DevOps Timeline Enhancement */
+.timeline-dot {
+    position: relative;
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 212, 170, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.8);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Performance Optimization */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .bg-gray-800,
+    .bg-gray-900 {
+        background: white !important;
+        border: 1px solid #ccc !important;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus Styles for Better Accessibility */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+    outline: 2px solid #00d4aa;
+    outline-offset: 2px;
+}
+
+/* Custom Focus Ring */
+.focus-ring:focus {
+    box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.3);
+    outline: none;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .text-gray-400 {
+        color: #ffffff !important;
+    }
+    
+    .border-gray-700 {
+        border-color: #ffffff !important;
+    }
+}
