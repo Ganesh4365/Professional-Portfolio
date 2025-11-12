@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git branch: 'deployment', url: 'https://github.com/Ganesh4365/Professional-Portfolio.git'
+                git branch: 'devops', url: 'https://github.com/Ganesh4365/Professional-Portfolio.git'
             }
         }
 
